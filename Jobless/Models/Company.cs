@@ -14,23 +14,20 @@ namespace Jobless.Models
         public string Name { get; set; }
         public string Password { get; set; }
         public int NumberOfActivePostings { get; set; }
-        public int JobPostingId { get; set; }
-        public JobPosting JobPosting { get; set; }
-        [Range(0, int.MaxValue, ErrorMessage = "Please enter a value bigger than {0}")]
 
-        public Company(int id, string name, string password, int numberOfActivePostings, int jobPosting)
+        public Company(int id, string name, string password, int numberOfActivePostings)
         {
             Id = id;
             Name = name;
             Password = password;
             NumberOfActivePostings = numberOfActivePostings;
-            JobPostingId = jobPosting;
         }
 
         public Company()
         {
             Name = "";
             Password = "";
+            NumberOfActivePostings = 0;
         }
     }
 }
