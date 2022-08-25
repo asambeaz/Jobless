@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Jobless.Models.JobPosting>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CompanyId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Proffesion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model@*.Where(Jobless.Models.JobPosting.CompanyId == )*@)
+{
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Id)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Company.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Proffesion)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Description)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.IsActive)
+    </td>
+    <td>
+
+        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+    </td>
+</tr>
+}
+    </tbody>
+</table>
+
+<div>
+    @*@Html.ActionLink("Add", "Create", "JobPosting", new { id = item.CompanyId })*@
+    <a id="lool" asp-controller="JobPosting" asp-action="Add_Job_Posting" asp-route-companyId="">Add Job Postings </a>
+</div>
+
+<script>
+    const a = document.querySelector("#lool");
+    a.setAttribute("asp-route-companyId", document.querySelector("tbody").rows[0].cells[0].innerText.trim())
+</script>
